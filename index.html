@@ -217,10 +217,11 @@
                     <span class="text-[10px] text-red-400/70 font-mono">[STRIKE]</span>
                 </button>
 
-                <button onclick="playSound('click'); openPersonnelScreen()" class="w-full py-2.5 bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/80 text-emerald-300 font-bold text-xs uppercase tracking-wider rounded transition-all active:scale-95 shadow-[0_0_15px_rgba(16,185,129,0.2)] flex items-center justify-between px-4">
+                <button onclick="playSound('click'); openPersonnelScreen()" class="w-full py-2.5 bg-blue-950/80 hover:bg-blue-900 border border-blue-500/80 text-blue-300 font-bold text-xs uppercase tracking-wider rounded transition-all active:scale-95 shadow-[0_0_15px_rgba(59,130,246,0.2)] flex items-center justify-between px-4">
                     <span>👥 PERSONNEL ASSISTANCE</span>
-                    <span class="text-[10px] text-emerald-400/70 font-mono">[ELITE OPS]</span>
+                    <span class="text-[10px] text-blue-400/70 font-mono">[ELITE]</span>
                 </button>
+
 
                 <button onclick="playSound('click'); closeTacticalMenu()" class="w-full py-2.5 bg-gray-900 hover:bg-gray-800 border border-gray-700 text-gray-300 font-bold text-xs uppercase tracking-wider rounded transition-all active:scale-95 mt-1">
                     ◀ BACK TO TERMINAL
@@ -899,7 +900,6 @@
         function closeTacticalMenu() {
             document.getElementById('tactical-menu-overlay').classList.add('hidden');
         }
-
         /* Personnel Assistance Subsystem */
         function openPersonnelScreen() {
             closeTacticalMenu();
