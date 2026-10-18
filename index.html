@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -222,62 +222,71 @@
                     <span class="text-[10px] text-blue-400/70 font-mono">[ELITE]</span>
                 </button>
 
-
                 <button onclick="playSound('click'); closeTacticalMenu()" class="w-full py-2.5 bg-gray-900 hover:bg-gray-800 border border-gray-700 text-gray-300 font-bold text-xs uppercase tracking-wider rounded transition-all active:scale-95 mt-1">
                     ◀ BACK TO TERMINAL
                 </button>
             </div>
         </div>
     </div>
-
-    <!-- PERSONNEL ASSISTANCE OVERLAY SCREEN -->
+     <!-- PERSONNEL ASSISTANCE OVERLAY SCREEN -->
     <div id="personnel-overlay" class="fixed inset-0 bg-[#030712]/99 z-50 flex flex-col items-center justify-center p-3 hidden matrix-grid crt-scanline">
-        <div class="w-full max-w-md bg-gray-950/95 border border-emerald-500/80 p-5 rounded-xl shadow-[0_0_60px_rgba(16,185,129,0.25)] flex flex-col gap-3 text-center backdrop-blur max-h-[96dvh] overflow-y-auto">
+        <div class="w-full max-w-md bg-gray-950/95 border border-blue-500/80 p-5 rounded-xl shadow-[0_0_60px_rgba(59,130,246,0.25)] flex flex-col gap-3 text-center backdrop-blur max-h-[96dvh] overflow-y-auto">
             
-            <div class="border-b border-emerald-800/80 pb-2 flex items-center justify-between shrink-0">
-                <span class="text-emerald-400 font-extrabold text-xs tracking-widest uppercase flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 status-dot"></span> PERSONNEL ASSISTANCE // ELITE OPS
+            <div class="border-b border-blue-800/80 pb-2 flex items-center justify-between shrink-0">
+                <span class="text-blue-400 font-extrabold text-xs tracking-widest uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-blue-400 status-dot"></span> PERSONNEL ASSISTANCE // ELITE OPS
                 </span>
-                <span class="text-emerald-300 font-mono text-[10px] font-bold">SEC-LVL 5</span>
+                <span class="text-blue-300 font-mono text-[10px] font-bold">SEC-LVL 5</span>
             </div>
 
             <div class="flex flex-col gap-2.5 text-left">
                 <div>
-                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Select Elite Force Deployment Unit:</label>
-                    <select id="personnel-unit" class="w-full bg-black border border-emerald-500/50 text-emerald-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-emerald-400">
-                        <option value="US Navy SEAL Team 6 (DEVGRU)">🇺🇸 US Navy SEAL Team 6 (DEVGRU)</option>
+                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Select Elite Force Unit:</label>
+                    <select id="personnel-unit" class="w-full bg-black border border-blue-500/50 text-blue-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-blue-400">
+                        <option value="Delta Force (1st SFOD-D)">🇺🇸 Delta Force (1st SFOD-D)</option>
                         <option value="British SAS (Special Air Service)">🇬🇧 British SAS (Special Air Service)</option>
-                        <option value="Israeli MOSSAD Sayeret Matkal">🇮🇱 MOSSAD Sayeret Matkal (Special Ops)</option>
-                        <option value="Russian Spetsnaz Alpha Group">🇷🇺 Russian Spetsnaz Alpha Group</option>
-                        <option value="Indian MARCOS (Marine Commandos)">🇮🇳 Indian MARCOS (Marine Commandos)</option>
-                        <option value="French GIGN Counter-Terrorism">🇫🇷 French GIGN Counter-Terrorism Unit</option>
-                        <option value="Shadow PMC Blackwater Detachment">🌐 Shadow PMC Private Contractor Detachment</option>
+                        <option value="Spetsnaz Alpha Group">🇷🇺 Spetsnaz Alpha Group</option>
+                        <option value="MOSSAD Kidon Unit">🇮🇱 MOSSAD Kidon Unit</option>
+                        <option value="MARCOS (Marine Commando Force)">🇮🇳 MARCOS (Marine Commandos)</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Assigned Objective Protocol:</label>
-                    <select id="personnel-objective" class="w-full bg-black border border-emerald-500/50 text-amber-400 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-emerald-400">
-                        <option value="ELIMINATE">🎯 ELIMINATE (Neutralize Target Permanently)</option>
-                        <option value="KIDNAP">🔏 KIDNAP (Extract & Secure Target Alive)</option>
-                        <option value="CRIPPLE">⚡ CRIPPLE (Sabotage / Incapacitate Assets)</option>
+                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Select Operation Directive:</label>
+                    <select id="personnel-directive" class="w-full bg-black border border-blue-500/50 text-red-400 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-blue-400 font-bold">
+                        <option value="ELIMINATE">🎯 ELIMINATE (Permanent Neutralization)</option>
+                        <option value="KIDNAP">📦 KIDNAP / EXTRACT (Target Acquisition)</option>
+                        <option value="CRIPPLE">⚠️ CRIPPLE / DISRUPT (Incapacitate Assets)</option>
                     </select>
                 </div>
 
-                <div>
-                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Target Intelligence & Particulars (Description Box):</label>
-                    <textarea id="personnel-target-info" rows="3" placeholder="Enter target identity, last known GPS coordinates, security details, and specific operational instructions..." 
-                        class="w-full bg-black border border-emerald-500/50 text-emerald-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-emerald-400 shadow-inner resize-none"></textarea>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Target Name / Alias:</label>
+                        <input type="text" id="target-name" placeholder="e.g. Target Alpha" 
+                            class="w-full bg-black border border-blue-500/50 text-blue-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-blue-400 shadow-inner">
+                    </div>
+                    <div>
+                        <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Location / Coordinates:</label>
+                        <input type="text" id="target-loc" placeholder="e.g. Sector 7 / Paris" 
+                            class="w-full bg-black border border-blue-500/50 text-blue-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-blue-400 shadow-inner">
+                    </div>
                 </div>
 
-                <button onclick="executePersonnelAssistance()" class="w-full py-3 bg-emerald-950 hover:bg-emerald-900 border border-emerald-500 text-emerald-300 font-bold text-xs uppercase rounded transition-all active:scale-95 shadow-[0_0_20px_rgba(16,185,129,0.3)] mt-1 flex items-center justify-center gap-2">
-                    <span>⚡ DEPLOY ELITE PERSONNEL UNIT</span>
+                <div>
+                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Target Details & Operational Description Box:</label>
+                    <textarea id="personnel-desc" rows="3" placeholder="Enter target profile, habits, security details, or operational instructions..." 
+                        class="w-full bg-black border border-blue-500/50 text-emerald-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-blue-400 shadow-inner resize-none"></textarea>
+                </div>
+
+                <button onclick="executePersonnelOp()" class="w-full py-3 bg-blue-950 hover:bg-blue-900 border border-blue-500 text-blue-300 font-bold text-xs uppercase rounded transition-all active:scale-95 shadow-[0_0_20px_rgba(59,130,246,0.3)] mt-1 flex items-center justify-center gap-2">
+                    <span>⚡ DEPLOY ELITE SQUAD</span>
                 </button>
             </div>
 
-            <!-- Execution Status Box -->
-            <div id="personnel-status-box" class="hidden bg-black/90 border border-emerald-500/40 p-3 rounded text-[11px] font-mono text-left space-y-1 max-h-48 overflow-y-auto shadow-inner">
-                <p id="personnel-status-header" class="text-emerald-400 font-bold animate-pulse">[ INITIATING SECURE ENCRYPTED HANDSHAKE... ]</p>
+            <!-- Operational Status Box -->
+            <div id="personnel-status-box" class="hidden bg-black/90 border border-blue-500/40 p-3 rounded text-[11px] font-mono text-left space-y-1 max-h-48 overflow-y-auto shadow-inner">
+                <p id="personnel-status-header" class="text-blue-400 font-bold animate-pulse">[ INITIATING SECURE BRIEFING UPLINK... ]</p>
                 <div id="personnel-log" class="text-[10px] space-y-0.5 text-gray-400 pt-1"></div>
             </div>
 
@@ -416,8 +425,7 @@
                     ⚡ CONFIRM WIRE TRANSFER
                 </button>
             </div>
-
-            <!-- 2. WITHDRAW REQUEST TAB CONTENT -->
+<!-- 2. WITHDRAW REQUEST TAB CONTENT -->
             <div id="finance-tab-withdraw" class="hidden flex flex-col gap-3 text-left">
                 <p class="text-[10px] text-amber-400/90 font-mono">
                     ⚠️ Hard-cash physical dispatch requested. Heavy armored transport vehicle with tactical military escort will be deployed directly to your physical coordinates.
@@ -604,8 +612,7 @@
 
         </div>
     </div>
-
-    <!-- MAIN APP CONTAINER -->
+  <!-- MAIN APP CONTAINER -->
     <div id="main-app" class="w-full h-full max-w-6xl max-h-[100dvh] p-2 flex flex-col justify-between bg-gray-950 border border-gray-800 relative hidden font-mono shadow-2xl overflow-hidden">
         
         <!-- HEADER BAR -->
@@ -713,7 +720,6 @@
         </footer>
 
     </div>
-
     <script>
         // Web App Manifest Generator
         const manifest = {
@@ -900,6 +906,7 @@
         function closeTacticalMenu() {
             document.getElementById('tactical-menu-overlay').classList.add('hidden');
         }
+
         /* Personnel Assistance Subsystem */
         function openPersonnelScreen() {
             closeTacticalMenu();
@@ -943,7 +950,7 @@
                 { text: `> Assigning tactical unit: ${unit}...`, delay: 600 },
                 { text: `> Directive loaded: [ ${directive} ] on target "${name}"`, delay: 1200 },
                 { text: `> Target Location locked: ${loc}`, delay: 1800 },
-                { text: `> Transmitting encrypted operational dossier & description...`, delay: 2400 },
+                { text: `> Transmitting encrypted operational dossier...`, delay: 2400 },
                 { text: `> Strike team insertion vectors confirmed active.`, delay: 3100 }
             ];
 
@@ -974,8 +981,7 @@
                 document.getElementById('personnel-desc').value = '';
             }, 3900);
         }
-
-        /* Classified Agency Intel Dispatcher Subsystem */
+/* Classified Agency Intel Dispatcher Subsystem */
         function openIntelDispatchScreen() {
             closeTacticalMenu();
             document.getElementById('intel-overlay').classList.remove('hidden');
@@ -1267,8 +1273,7 @@
                 appendLog("[EVAC] EXTRACTION PROTOCOL STAND DOWN ORDERED.", "text-amber-400");
             }
         }
-
-        /* Advanced Airstrike Controller */
+  /* Advanced Airstrike Controller */
         function openAirstrikeScreen() {
             closeTacticalMenu();
             playSound('alarm');
@@ -1406,8 +1411,7 @@
                         { text: "[+] EAPOL 4-way handshake captured successfully. Saved to /tmp/wlan0-01.cap", color: "text-emerald-400 font-bold", delay: 3300 }
                     ];
                     break;
-
-                case 'nmap':
+case 'nmap':
                     document.getElementById('command-cursor').innerText = "nmap -sS -p- 10.42.0.1";
                     steps = [
                         { text: "Starting Nmap 7.94 ( https://nmap.org ) at 2026-10-18 11:55 UTC", color: "text-gray-400", delay: 250 },
@@ -1515,4 +1519,3 @@
     </script>
 </body>
 </html>
-
