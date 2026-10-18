@@ -217,9 +217,9 @@
                     <span class="text-[10px] text-red-400/70 font-mono">[STRIKE]</span>
                 </button>
 
-                <button onclick="playSound('click'); openSynthesisScreen()" class="w-full py-2.5 bg-blue-950/80 hover:bg-blue-900 border border-blue-500/80 text-blue-300 font-bold text-xs uppercase tracking-wider rounded transition-all active:scale-95 shadow-[0_0_15px_rgba(59,130,246,0.2)] flex items-center justify-between px-4">
-                    <span>🧠 INFO SYNTHESIS & EXEC CMD</span>
-                    <span class="text-[10px] text-blue-400/70 font-mono">[SYNTHESIS]</span>
+                <button onclick="playSound('click'); openPersonnelScreen()" class="w-full py-2.5 bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/80 text-emerald-300 font-bold text-xs uppercase tracking-wider rounded transition-all active:scale-95 shadow-[0_0_15px_rgba(16,185,129,0.2)] flex items-center justify-between px-4">
+                    <span>👥 PERSONNEL ASSISTANCE</span>
+                    <span class="text-[10px] text-emerald-400/70 font-mono">[ELITE OPS]</span>
                 </button>
 
                 <button onclick="playSound('click'); closeTacticalMenu()" class="w-full py-2.5 bg-gray-900 hover:bg-gray-800 border border-gray-700 text-gray-300 font-bold text-xs uppercase tracking-wider rounded transition-all active:scale-95 mt-1">
@@ -229,46 +229,58 @@
         </div>
     </div>
 
-    <!-- INFORMATION SYNTHESIS & EXECUTIVE COMMAND OVERLAY SCREEN -->
-    <div id="synthesis-overlay" class="fixed inset-0 bg-[#030712]/99 z-50 flex flex-col items-center justify-center p-3 hidden matrix-grid crt-scanline">
-        <div class="w-full max-w-md bg-gray-950/95 border border-blue-500/80 p-5 rounded-xl shadow-[0_0_60px_rgba(59,130,246,0.25)] flex flex-col gap-3 text-center backdrop-blur max-h-[96dvh] overflow-y-auto">
+    <!-- PERSONNEL ASSISTANCE OVERLAY SCREEN -->
+    <div id="personnel-overlay" class="fixed inset-0 bg-[#030712]/99 z-50 flex flex-col items-center justify-center p-3 hidden matrix-grid crt-scanline">
+        <div class="w-full max-w-md bg-gray-950/95 border border-emerald-500/80 p-5 rounded-xl shadow-[0_0_60px_rgba(16,185,129,0.25)] flex flex-col gap-3 text-center backdrop-blur max-h-[96dvh] overflow-y-auto">
             
-            <div class="border-b border-blue-800/80 pb-2 flex items-center justify-between shrink-0">
-                <span class="text-blue-400 font-extrabold text-xs tracking-widest uppercase flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-blue-400 status-dot"></span> INFORMATION SYNTHESIS & CMD
+            <div class="border-b border-emerald-800/80 pb-2 flex items-center justify-between shrink-0">
+                <span class="text-emerald-400 font-extrabold text-xs tracking-widest uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 status-dot"></span> PERSONNEL ASSISTANCE // ELITE OPS
                 </span>
-                <span class="text-blue-300 font-mono text-[10px] font-bold">NEXUS AI CORE</span>
+                <span class="text-emerald-300 font-mono text-[10px] font-bold">SEC-LVL 5</span>
             </div>
 
             <div class="flex flex-col gap-2.5 text-left">
                 <div>
-                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Synthesis Target Vector:</label>
-                    <select id="synth-vector" class="w-full bg-black border border-blue-500/50 text-blue-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-blue-400">
-                        <option value="Global Threat Matrix & OSINT Fusion">🌐 Global Threat Matrix & OSINT Fusion</option>
-                        <option value="Cryptographic Hash & Key Decryption Engine">🔑 Cryptographic Hash & Key Decryption Engine</option>
-                        <option value="Financial Flow & Offshore Shadow Network Analysis">💰 Financial Flow & Offshore Shadow Analysis</option>
-                        <option value="Satellite SIGINT & Triangulation Synthesis">🛰️ Satellite SIGINT & Triangulation Synthesis</option>
+                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Select Elite Force Deployment Unit:</label>
+                    <select id="personnel-unit" class="w-full bg-black border border-emerald-500/50 text-emerald-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-emerald-400">
+                        <option value="US Navy SEAL Team 6 (DEVGRU)">🇺🇸 US Navy SEAL Team 6 (DEVGRU)</option>
+                        <option value="British SAS (Special Air Service)">🇬🇧 British SAS (Special Air Service)</option>
+                        <option value="Israeli MOSSAD Sayeret Matkal">🇮🇱 MOSSAD Sayeret Matkal (Special Ops)</option>
+                        <option value="Russian Spetsnaz Alpha Group">🇷🇺 Russian Spetsnaz Alpha Group</option>
+                        <option value="Indian MARCOS (Marine Commandos)">🇮🇳 Indian MARCOS (Marine Commandos)</option>
+                        <option value="French GIGN Counter-Terrorism">🇫🇷 French GIGN Counter-Terrorism Unit</option>
+                        <option value="Shadow PMC Blackwater Detachment">🌐 Shadow PMC Private Contractor Detachment</option>
                     </select>
                 </div>
 
                 <div>
-                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Executive Command Query / Directive:</label>
-                    <textarea id="synth-query" rows="3" placeholder="Input raw intelligence feeds or executive directive for neural synthesis..." 
-                        class="w-full bg-black border border-blue-500/50 text-emerald-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-blue-400 shadow-inner resize-none"></textarea>
+                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Assigned Objective Protocol:</label>
+                    <select id="personnel-objective" class="w-full bg-black border border-emerald-500/50 text-amber-400 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-emerald-400">
+                        <option value="ELIMINATE">🎯 ELIMINATE (Neutralize Target Permanently)</option>
+                        <option value="KIDNAP">🔏 KIDNAP (Extract & Secure Target Alive)</option>
+                        <option value="CRIPPLE">⚡ CRIPPLE (Sabotage / Incapacitate Assets)</option>
+                    </select>
                 </div>
 
-                <button onclick="executeSynthesis()" class="w-full py-3 bg-blue-950 hover:bg-blue-900 border border-blue-500 text-blue-300 font-bold text-xs uppercase rounded transition-all active:scale-95 shadow-[0_0_20px_rgba(59,130,246,0.3)] mt-1 flex items-center justify-center gap-2">
-                    <span>⚙️ EXECUTE NEURAL SYNTHESIS</span>
+                <div>
+                    <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Target Intelligence & Particulars (Description Box):</label>
+                    <textarea id="personnel-target-info" rows="3" placeholder="Enter target identity, last known GPS coordinates, security details, and specific operational instructions..." 
+                        class="w-full bg-black border border-emerald-500/50 text-emerald-300 px-3 py-2 rounded text-xs font-mono focus:outline-none focus:border-emerald-400 shadow-inner resize-none"></textarea>
+                </div>
+
+                <button onclick="executePersonnelAssistance()" class="w-full py-3 bg-emerald-950 hover:bg-emerald-900 border border-emerald-500 text-emerald-300 font-bold text-xs uppercase rounded transition-all active:scale-95 shadow-[0_0_20px_rgba(16,185,129,0.3)] mt-1 flex items-center justify-center gap-2">
+                    <span>⚡ DEPLOY ELITE PERSONNEL UNIT</span>
                 </button>
             </div>
 
-            <!-- Synthesis Output Box -->
-            <div id="synth-status-box" class="hidden bg-black/90 border border-blue-500/40 p-3 rounded text-[11px] font-mono text-left space-y-1 max-h-48 overflow-y-auto shadow-inner">
-                <p id="synth-status-header" class="text-blue-400 font-bold animate-pulse">[ SYNTHESIZING INTELLIGENCE VECTORS... ]</p>
-                <div id="synth-log" class="text-[10px] space-y-0.5 text-gray-400 pt-1"></div>
+            <!-- Execution Status Box -->
+            <div id="personnel-status-box" class="hidden bg-black/90 border border-emerald-500/40 p-3 rounded text-[11px] font-mono text-left space-y-1 max-h-48 overflow-y-auto shadow-inner">
+                <p id="personnel-status-header" class="text-emerald-400 font-bold animate-pulse">[ INITIATING SECURE ENCRYPTED HANDSHAKE... ]</p>
+                <div id="personnel-log" class="text-[10px] space-y-0.5 text-gray-400 pt-1"></div>
             </div>
 
-            <button onclick="closeSynthesisScreen()" class="w-full py-2 bg-gray-900 hover:bg-gray-800 border border-gray-700 text-gray-300 font-bold text-xs uppercase tracking-wider rounded transition-all active:scale-95 shrink-0 mt-1">
+            <button onclick="closePersonnelScreen()" class="w-full py-2 bg-gray-900 hover:bg-gray-800 border border-gray-700 text-gray-300 font-bold text-xs uppercase tracking-wider rounded transition-all active:scale-95 shrink-0 mt-1">
                 ◀ BACK TO MENU
             </button>
         </div>
@@ -297,19 +309,4 @@
                         <option value="INTERPOL - Cybercrime Directorate">🌐 INTERPOL - Global Cyber Command</option>
                         <option value="FSB - Federal Security Service (Russia)">🇷🇺 FSB - Special Service Center (Russia)</option>
                     </select>
-                </div>
-
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Clearance Level:</label>
-                        <select id="intel-clearance" class="w-full bg-black border border-purple-500/50 text-amber-400 px-2 py-2 rounded text-xs font-mono focus:outline-none focus:border-purple-400">
-                            <option value="RESTRICTED // SEC-2">RESTRICTED</option>
-                            <option value="SECRET // SEC-4">SECRET</option>
-                            <option value="TOP SECRET // SEC-5">TOP SECRET</option>
-                            <option value="COSMIC TOP SECRET // EYE-9" selected>COSMIC TOP SECRET</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="text-[10px] text-gray-400 font-mono uppercase block mb-1">Subject Vector:</label>
-                        <input type="text" id="intel-subject" placeholder="e.g. OPERATION SHADOW" 
-                            class="w-full bg-black border border-purple-
+                </ 
