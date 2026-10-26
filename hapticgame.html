@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Haptic Control Matrix</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#04060d',
+                            panel: 'rgba(12, 18, 34, 0.85)',
+                            cyan: '#06b6d4',
+                            neon: '#22d3ee',
+                            pink: '#f43f5e',
+                            amber: '#f59e0b',
+                            emerald: '#10b981'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Lucide Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #04060d;
+            color: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .cyber-card {
+            background: rgba(16, 24, 48, 0.65);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+        }
+        .glow-cyan { box-shadow: 0 0 15px rgba(6, 182, 212, 0.25); }
+        .glow-pink { box-shadow: 0 0 15px rgba(244, 63, 94, 0.25); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-4 max-w-md mx-auto">
+
+    <!-- HEADER HUD -->
+    <header class="cyber-card p-4 rounded-2xl flex items-center justify-between mb-4 glow-cyan">
+        <div class="flex items-center gap-2">
+            <div id="vibeStatusIndicator" class="w-3 h-3 rounded-full bg-slate-600"></div>
+            <span class="font-mono text-xs font-bold tracking-widest text-cyan-400">HAPTIC ENGINE // V1.0</span>
+        </div>
+        <button onclick="stopVibration()" class="bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/40 text-rose-400 text-xs font-mono font-bold px-3 py-1.5 rounded-xl flex items-center gap-1">
+            <i data-lucide="square" class="w-3.5 h-3.5"></i> STOP
+        </button>
+    </header>
+
+    <!-- MAIN HAPTIC CONTROLS -->
+    <main class="space-y-4 flex-1">
+
+        <!-- PRESET PATTERNS -->
+        <section class="cyber-card p-4 rounded-2xl space-y-3">
+            <h2 class="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="activity" class="w-4 h-4 text-cyan-400"></i> Preset Vibration Waves
+            </h2>
+            <div class="grid grid-cols-2 gap-2">
+                <button onclick="vibratePattern([50])" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 p-3 rounded-xl text-left font-mono transition-all active:scale-95">
+                    <div class="text-xs font-bold text-cyan-300">Tap / Click</div>
+                    <div class="text-[9px] text-slate-400">50ms Single Pulse</div>
+                </button>
+                <button onclick="vibratePattern([40, 60, 40])" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 p-3 rounded-xl text-left font-mono transition-all active:scale-95">
+                    <div class="text-xs font-bold text-cyan-300">Double Tap</div>
+                    <div class="text-[9px] text-slate-400">Quick Dual Pulse</div>
+                </button>
+                <button onclick="vibratePattern([80, 50, 80, 50, 80, 50, 200])" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 p-3 rounded-xl text-left font-mono transition-all active:scale-95">
+                    <div class="text-xs font-bold text-amber-400">Heartbeat</div>
+                    <div class="text-[9px] text-slate-400">Rhythmic Pulse Wave</div>
+                </button>
+                <button onclick="vibratePattern([100, 30, 100, 30, 100, 30, 100, 30, 100, 30, 100, 30, 100, 30, 100])" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 p-3 rounded-xl text-left font-mono transition-all active:scale-95">
+                    <div class="text-xs font-bold text-rose-400">Warning Siren</div>
+                    <div class="text-[9px] text-slate-400">Rapid Alarm Burst</div>
+                </button>
+                <button onclick="vibratePattern([100, 50, 200, 50, 300, 50, 400, 50, 500])" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 p-3 rounded-xl text-left font-mono transition-all active:scale-95">
+                    <div class="text-xs font-bold text-emerald-400">Engine Rev up</div>
+                    <div class="text-[9px] text-slate-400">Accelerating Sequence</div>
+                </button>
+                <button onclick="vibratePattern([100, 100, 100, 100, 100, 300, 300, 100, 300, 100, 300, 300, 100, 100, 100, 100, 100])" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 p-3 rounded-xl text-left font-mono transition-all active:scale-95">
+                    <div class="text-xs font-bold text-pink-400">SOS Morse Code</div>
+                    <div class="text-[9px] text-slate-400">··· ——— ··· Emergency</div>
+                </button>
+            </div>
+        </section>
+
+        <!-- CUSTOM SEQUENCER -->
+        <section class="cyber-card p-4 rounded-2xl space-y-3 glow-pink">
+            <h2 class="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="sliders" class="w-4 h-4 text-pink-400"></i> Custom Sequence Builder
+            </h2>
+            <div class="space-y-2">
+                <label class="text-[10px] font-mono text-slate-400">Vibration Pattern (On, Off, On, Off in ms)</label>
+                <input type="text" id="customPatternInput" value="200, 100, 200, 100, 400" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white font-mono focus:border-pink-500 outline-none">
+                <button onclick="triggerCustomPattern()" class="w-full bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white font-mono text-xs font-bold py-2.5 rounded-xl shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2">
+                    <i data-lucide="play" class="w-4 h-4"></i> FIRE CUSTOM PATTERN
+                </button>
+            </div>
+        </section>
+
+        <!-- FREQUENCY OSCILLATOR -->
+        <section class="cyber-card p-4 rounded-2xl space-y-3">
+            <h2 class="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="radio" class="w-4 h-4 text-cyan-400"></i> Continuous Pulse Oscillator
+            </h2>
+            <div class="space-y-3">
+                <div>
+                    <div class="flex justify-between text-[10px] font-mono text-slate-400 mb-1">
+                        <span>Pulse Length</span>
+                        <span id="pulseVal">100 ms</span>
+                    </div>
+                    <input type="range" id="pulseRange" min="20" max="1000" step="10" value="100" oninput="updateOscillatorValues()" class="w-full accent-cyan-400">
+                </div>
+                <div>
+                    <div class="flex justify-between text-[10px] font-mono text-slate-400 mb-1">
+                        <span>Pause Gap</span>
+                        <span id="gapVal">100 ms</span>
+                    </div>
+                    <input type="range" id="gapRange" min="20" max="1000" step="10" value="100" oninput="updateOscillatorValues()" class="w-full accent-cyan-400">
+                </div>
+                <div class="flex gap-2">
+                    <button id="oscBtn" onclick="toggleOscillator()" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold py-2.5 rounded-xl transition-all">
+                        START OSCILLATOR
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER / WARNING -->
+    <footer class="mt-4 text-center">
+        <p class="text-[10px] font-mono text-slate-500">Note: Haptic feedback depends on device hardware support.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        let oscInterval = null;
+        let isOsculating = false;
+
+        function checkSupport() {
+            const indicator = document.getElementById('vibeStatusIndicator');
+            if ("vibrate" in navigator) {
+                indicator.className = 'w-3 h-3 rounded-full bg-emerald-400 animate-pulse';
+            } else {
+                indicator.className = 'w-3 h-3 rounded-full bg-rose-500';
+                alert("Web Vibration API is not supported on this device/browser.");
+            }
+        }
+        checkSupport();
+
+        function vibratePattern(pattern) {
+            if ("vibrate" in navigator) {
+                navigator.vibrate(pattern);
+            }
+        }
+
+        function stopVibration() {
+            if ("vibrate" in navigator) {
+                navigator.vibrate(0);
+            }
+            if (isOsculating) {
+                toggleOscillator();
+            }
+        }
+
+        function triggerCustomPattern() {
+            const val = document.getElementById('customPatternInput').value;
+            const pattern = val.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+            if (pattern.length > 0) {
+                vibratePattern(pattern);
+            }
+        }
+
+        function updateOscillatorValues() {
+            const pulse = document.getElementById('pulseRange').value;
+            const gap = document.getElementById('gapRange').value;
+            document.getElementById('pulseVal').innerText = `${pulse} ms`;
+            document.getElementById('gapVal').innerText = `${gap} ms`;
+        }
+
+        function toggleOscillator() {
+            const btn = document.getElementById('oscBtn');
+            if (isOsculating) {
+                clearInterval(oscInterval);
+                oscInterval = null;
+                isOsculating = false;
+                btn.innerText = "START OSCILLATOR";
+                btn.className = "w-full bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold py-2.5 rounded-xl transition-all";
+                vibratePattern(0);
+            } else {
+                isOsculating = true;
+                btn.innerText = "STOP OSCILLATOR";
+                btn.className = "w-full bg-rose-600 hover:bg-rose-500 text-white font-mono text-xs font-bold py-2.5 rounded-xl transition-all";
+                
+                const pulse = parseInt(document.getElementById('pulseRange').value);
+                const gap = parseInt(document.getElementById('gapRange').value);
+                
+                vibratePattern([pulse]);
+                oscInterval = setInterval(() => {
+                    vibratePattern([pulse]);
+                }, pulse + gap);
+            }
+        }
+    </script>
+</body>
+</html>
