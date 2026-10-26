@@ -1,8 +1,10 @@
 {
+  "id": "/FocusPulse/",
+  "scope": "./",
+  "start_url": "./index.html",
   "name": "FocusPulse - Advanced Focus Engine",
   "short_name": "FocusPulse",
   "description": "Anti-Procrastination Multi-Timer & Focus Tracker",
-  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0b0f19",
   "theme_color": "#0b0f19",
